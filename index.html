@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <main
+      id="app"
+      class="h-screen grid grid-rows-2 grid-cols-2 gap-4 p-4 snap-start"
+    >
+      <div class="border border-red-500 overflow-x-hidden">
+        <iframe
+          title="timer"
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-presentation"
+          width="100%"
+          height="100%"
+          class="object-contain w-full h-full"
+          id="timer"
+        >
+        </iframe>
+      </div>
+      <div class="border border-red-500">
+        <iframe
+          title="metronome"
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-presentation"
+          width="100%"
+          height="254"
+          class="object-contain w-full h-full"
+          id="metronome"
+          src="https://www.google.com/search?igu=1&q=metronome"
+        >
+        </iframe>
+      </div>
+      <div class="border border-red-500">
+        <iframe
+          title="stopwatch"
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-presentation"
+          width="100%"
+          height="254"
+          class="object-contain w-full h-full"
+          id="stopwatch"
+          src="https://www.google.com/search?igu=1&q=stopwatch"
+        >
+        </iframe>
+      </div>
+      <div>
+        <textarea
+          id="notes"
+          class="border border-gray-500 w-full h-full text-sm p-1"
+          placeholder="Notes"
+        ></textarea>
+      </div>
+    </main>
+    <section
+      id="guitar"
+      class="h-screen grid grid-rows-2 grid-cols-2 gap-4 p-4 snap-start"
+    >
+      <div class="border border-red-500">
+        <iframe
+          title="fretboard-guesser"
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-presentation"
+          width="100%"
+          height="254"
+          class="object-contain w-full h-full"
+          style="zoom: 0.8"
+          id="fretboard-guesser"
+          src="https://www.musictheory.net/exercises/fretboard"
+        >
+        </iframe>
+      </div>
+      <div class="border border-red-500" id="random-scale-container">
+        <iframe
+          title="random-scale"
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-presentation"
+          width="100%"
+          height="254"
+          class="object-contain w-full h-full"
+          id="random-scale"
+          src="https://www.therandomscalemachine.com/"
+        >
+        </iframe>
+      </div>
+    </section>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
