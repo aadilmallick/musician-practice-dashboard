@@ -1,3 +1,4 @@
+import { PIPElement } from "./PIPVideo";
 import { PracticeSessionTimer } from "./PracticeSessionTimer";
 import "./style.css";
 
@@ -80,6 +81,7 @@ async function handleGoogle() {
 handleGoogle();
 
 type Selector = typeof HTMLElement.prototype.querySelector;
+
 export class DOM {
   /**
    * Adding elements
@@ -139,6 +141,7 @@ const $timer = DOM.createQuerySelectorWithThrow(sessionTimerSection);
 const playButton = $timer("#play");
 const pauseButton = $timer("#pause");
 const resetButton = $timer("#reset");
+const togglePiPButton = $timer("#pip");
 const timerValueElement = $timer("#timer-stats");
 
 let practiceSessionTimerManager = new PracticeSessionTimer();
@@ -155,9 +158,7 @@ function updateTimerValue(elapsedTime: number) {
   timerValueElement!.textContent = `${minutes}:${seconds
     .toString()
     .padStart(2, "0")}`;
-  document.title = `current practice duration - ${minutes}:${seconds
-    .toString()
-    .padStart(2, "0")}`;
+  document.title = `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
 playButton!.addEventListener("click", () => {
@@ -200,5 +201,24 @@ async function handleLeaderboard() {
     ]);
   }
 }
+
+async function handlePip() {
+  await pipPlayer.togglePictureInPicture({
+    onClose: () => {
+      sessionTimerSection.innerHTML = "";
+      sessionTimerSection.appendChild(timerElement);
+      togglePiPButton!.textContent = "Open PiP";
+    },
+    onOpen: (pipWindow) => {
+      sessionTimerSection.innerHTML = "Playing in PIP Window";
+      togglePiPButton!.textContent = "Close PiP";
+    },
+  });
+}
+
+const timerElement = DOM.$throw("#practice-session-timer > div");
+const pipPlayer = new PIPElement(timerElement);
+
+togglePiPButton!.addEventListener("click", handlePip);
 
 handleLeaderboard();
