@@ -28,9 +28,11 @@ export class PIPVideo {
       // If the video is not in PiP mode, request PiP
       if (this.video !== document.pictureInPictureElement) {
         const pipWindow = await this.video.requestPictureInPicture();
+        return pipWindow;
       } else {
         // If the video is in PiP mode, exit PiP
         await document.exitPictureInPicture();
+        return null;
       }
     } catch (error) {
       console.error("Error toggling Picture-in-Picture:", error);

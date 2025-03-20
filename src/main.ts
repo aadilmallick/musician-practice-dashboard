@@ -209,7 +209,7 @@ async function handlePip() {
       sessionTimerSection.appendChild(timerElement);
       togglePiPButton!.textContent = "Open PiP";
     },
-    onOpen: (pipWindow) => {
+    onOpen: (_) => {
       sessionTimerSection.innerHTML = "Playing in PIP Window";
       togglePiPButton!.textContent = "Close PiP";
     },
